@@ -16,23 +16,23 @@ export class ItemsComponent implements OnInit {
     this.items = [
       {
         id: 0,
-        title: 'manzana',
-        price: 10.5,
+        title: 'panales gold',
+        price: 42000,
         quantity: 4,
         completed: false
       },
       {
         id: 1,
-        title: 'pan',
-        price: 8,
+        title: 'leche',
+        price: 91000,
         quantity: 2,
         completed: true
       },
       {
         id: 2,
-        title: 'empanada',
-        price: 1500,
-        quantity: 6,
+        title: 'nestum',
+        price: 12500,
+        quantity: 3,
         completed: false
       }
    ];
@@ -40,7 +40,7 @@ export class ItemsComponent implements OnInit {
    
   }
   deleteItem(item:Item){
-    this.items = this.items.filter(x => x.id === item.id);
+    this.items = this.items.filter(x => x.id != item.id);
 
 }
 }
