@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SSL_OP_ALL, SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import { Item } from '../../models/items'
 
 @Component({
@@ -36,11 +37,8 @@ export class ItemsComponent implements OnInit {
         completed: false
       }
    ];
-
-   
   }
   deleteItem(item:Item){
-    this.items = this.items.filter(x => x.id != item.id);
-
-}
+    this.items = this.items.filter(x => x.id !== item.id);
+  }
 }
