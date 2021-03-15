@@ -2,6 +2,12 @@
     display: flex;
     box-sizing: border-box;
 }
+.completed{
+    text-decoration: line-through;
+}
+.completed .total{
+    color: #B71F17;
+}
 div{
     padding: 5px 0;
 }
