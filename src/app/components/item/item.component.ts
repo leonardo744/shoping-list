@@ -11,6 +11,8 @@ export class ItemComponent implements OnInit {
   
   @Input() item: Item = new Item();
   @Output() deleteItem: EventEmitter<Item> = new EventEmitter();
+  @Output() toggleItem: EventEmitter<Item> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,5 +22,6 @@ onDelete(item:Item){
 }
 onToggle(item:Item){
   item.completed = !item.completed;
+  this.toggleItem.emit(item);
 }
 }

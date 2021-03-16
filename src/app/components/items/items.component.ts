@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../../models/items'
 
@@ -9,6 +10,7 @@ import { Item } from '../../models/items'
 export class ItemsComponent implements OnInit {
 
   items: Item[] = [];
+  total: number = 0;
 
   constructor() { }
 
@@ -26,7 +28,7 @@ export class ItemsComponent implements OnInit {
         title: 'leche',
         price: 91000,
         quantity: 2,
-        completed: true
+        completed: false
       },
       {
         id: 2,
@@ -35,9 +37,21 @@ export class ItemsComponent implements OnInit {
         quantity: 3,
         completed: true
       }
-   ];
+    ];
+    this.getTotal();
   }
-  deleteItem(item:Item){
-    this.items = this.items.filter(x => x.id !== item.id); 
+  deleteItem(item: Item) {
+    this.items = this.items.filter(x => x.id !== item.id);
+    this.getTotal();
+  }
+  toggleItem(item:Item){
+    this.getTotal();
+  }
+  getTotal() {
+    this.total = this.items
+      .filter(item => !item.completed)
+      .map(item => item.quantity * item.price)
+      .reduce((acc, item) => acc += item, 0)
+
   }
 }
